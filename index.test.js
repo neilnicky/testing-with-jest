@@ -33,7 +33,7 @@
 
 ////////////////////////////////////////////////
 
-const fetchPromise = require("./index");
+// const fetchPromise = require("./index");
 
 // test("the data is peanut butter", () => {
 //   return expect(fetchPromise()).resolves.toBe("peanut butter");
@@ -43,7 +43,31 @@ const fetchPromise = require("./index");
 //   return expect(fetchPromise()).rejects.toThrow("error");
 // });
 
-test("the data is peanut butter", async () => {
-  const data = await fetchPromise();
-  expect(data).toBe("peanut butter");
+// test("the data is peanut butter", async () => {
+//   const data = await fetchPromise();
+//   expect(data).toBe("peanut butter");
+// });
+
+////////////////////////////////////////////////
+
+// test("mock implementation of a basic function", () => {
+//   const mock = jest.fn((x) => 42 + x);
+//   expect(mock(10)).toBe(52);
+//   expect(mock).toHaveBeenCalledWith(10);
+// });
+
+////////////////////////////////////////////////
+
+test("spying on a method of an object", () => {
+  const video = {
+    play() {
+      return true;
+    },
+  };
+
+  const spy = jest.spyOn(video, "play");
+  video.play();
+
+  expect(spy).toHaveBeenCalledWith();
+  spy.mockRestore();
 });
